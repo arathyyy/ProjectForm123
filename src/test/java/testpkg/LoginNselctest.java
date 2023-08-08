@@ -19,7 +19,7 @@ import pagepkg.Loginandselect;
 import utilitypkg.Utilis;
 
 public class LoginNselctest extends Baseclass{
-	@Test
+	@Test(priority=1)
 	public void loginCred() throws InterruptedException, IOException
 	{
 	Loginandselect nw=new Loginandselect(driver);
@@ -52,23 +52,71 @@ public class LoginNselctest extends Baseclass{
 		
 		String title=driver.getTitle();
 		System.out.println("Title--"+title);
+		System.out.println("logo of thr page is displayed");
 		
+		
+		
+		
+		// nw.viewForms();
+		
+		
+	}
+	
+	
+	@Test(priority=2)
+	public void formSelect()
+	{
+		 Loginandselect nw=new Loginandselect(driver);
 		nw.nwForms();
 		nw.publishForm();
+		
 		//driver.navigate().back();
 		nw.sortform();
-		nw.fstCpy("Arathy", "S", "abc@gmail.com", "9874563210","through newspaper");
+	
+	}
+	@Test(priority=3)
+	public void formFilSubmit() throws InterruptedException, IOException
+	{
 		
-		 nw.viewForms();
+		Loginandselect nw=new Loginandselect(driver);
+		nw.fstCpy("Arathy", "S", "abc@gmail.com", "9874563210","through newspaper");
+		System.out.println("form submitted sucessfully!!");
+		nw.viewForms();
+		System.out.println("Form veiwed sucessfully!!");
+	}
+	@Test(priority=4)
+	public void linkValidtn()
+	{
+		Loginandselect nw=new Loginandselect(driver);
 		 Utilis.linkValidation(driver);
 		 nw.linkvalid();
 		 driver.navigate().back();
 		 driver.navigate().back();
+		 System.out.println("Link validation completed");
+		
+	}
+	@Test(priority=5)
+	public void delForm() throws InterruptedException
+	{
+		Loginandselect nw=new Loginandselect(driver);
 		 nw.delForm();
+	}
+		 @Test(priority=6)
+		 public void test2()
+		 {
+			 Loginandselect nw=new Loginandselect(driver);
+			 nw.logout();
+			 System.out.println("logged out sucessfully!!!");
+			 
+		 }
 		
 		
 
 	
 	
+	
+
+
+		
 	}
-}
+

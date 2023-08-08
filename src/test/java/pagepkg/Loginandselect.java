@@ -25,6 +25,7 @@ public class Loginandselect {
 	//By log=By.xpath("//*[@id=\"menu-item-424\"]/a");
 	By usname=By.name("username");
 	By pswd=By.name("password");
+	By logos = By.xpath("//*[@id=\"headerV3\"]/div/div[2]/div/div[1]/a/img");
 	By loginbut=By.id("submit-form-button");
 	By nwform=By.xpath("//*[@id=\"headerV3\"]/div/div[3]/button");
 	By temp=By.xpath("//*[@id=\"qa_online_event_registration\"]");
@@ -49,6 +50,10 @@ public class Loginandselect {
 	By delfrm1=By.xpath("//*[@id=\"view\"]/div[7]/div[3]/button[2]");
 	By delfrm2=By.xpath("//*[@id=\"view-row-context-menu\"]/div[16]");
 	By delfrm3=By.xpath("/html/body/div[21]/div/div[3]/button[1]");
+	By logout1=By.xpath("//*[@id=\"headerV3\"]/div/div[2]/div/ul[2]/li[3]/div");
+	By logout2=By.xpath("//*[@id=\"headerV3\"]/div/div[2]/div/ul[2]/li[3]/ul/li[8]/div");
+	
+	
 	
 	public Loginandselect(WebDriver driver)
 	{
@@ -66,7 +71,10 @@ public class Loginandselect {
 	public void logClick()
 	{
 		driver.findElement(loginbut).click();
+		
 		System.out.println("sucessfully logged in!!!");
+		driver.findElement(logos).isDisplayed();
+
 	}
 	public void nwForms()
 	{
@@ -127,7 +135,7 @@ public class Loginandselect {
 				String txtmessage=driver.getPageSource();
 				if(txtmessage.contains("Your message has been sent. Thank you for filling out our form!"))
 				{
-				   System.out.println("Your message has been sent. Thank you for filling out our form!");
+				   System.out.println(" form filling completed with message -Your message has been sent. Thank you for filling out our form!");
 				}
 				
 				driver.close();
@@ -159,9 +167,13 @@ public class Loginandselect {
 			driver.findElement(delfrm1).click();
 			driver.findElement(delfrm2).click();
 			 Thread.sleep(1000);
-			
+			driver.navigate().refresh();
 		}
-		
+		public void logout()
+		{
+			driver.findElement(logout1).click();
+			driver.findElement(logout2).click();
+			}
 		
 		
 		
